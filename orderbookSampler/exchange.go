@@ -28,6 +28,12 @@ func (e *Exchange) SetName(name string) {
 	}
 }
 
+func (e *Exchange) UpdateTokens() {
+	for i := 0;i < len(e.tokens);i++ {
+		e.tokens[i].UpdatePrice()
+	}
+}
+
 func (e *Exchange) GetTokens() []Token {
 	return e.tokens
 }
