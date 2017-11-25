@@ -1,5 +1,12 @@
 package orderbookSampler
 
+import (
+	"net/http"
+	"fmt"
+	"os"
+	"encoding/json"
+)
+
 type Token struct {
 	// figure out how to do this with encapsulation
 	Name   string `json:"name"`
@@ -9,16 +16,16 @@ type Token struct {
 	last   float64
 }
 
-func (t Token) getName() string {
+func (t *Token) GetName() string {
 	return t.Name
 }
 
-func (t Token) setName(name string) {
-	t.Name = name
-}
-
-func (t Token) updatePrice(bid float64, ask float64, last float64) {
-	t.bid = bid
-	t.last = last
-	t.ask = ask
+func (t *Token) UpdatePrice() {
+	response,err := http.Get(t.Ticker)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(-1)
+	}
+	defer response.Body.Close()
+	json.NewDecoder(response.Body).Decode(&t)
 }
