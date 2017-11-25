@@ -9,11 +9,11 @@ import (
 
 type Token struct {
 	// figure out how to do this with encapsulation
-	Name   string `json:"name"`
-	Ticker string `json:"ticker"`
-	bid    float64
-	ask    float64
-	last   float64
+	Name   string  `json:"name"`
+	Ticker string  `json:"ticker"`
+	Bid    float64 `json:"bid,string"`
+	Ask    float64 `json:"ask,string"`
+	Last   float64 `json:"last,string"`
 }
 
 func (t *Token) GetName() string {
@@ -27,5 +27,9 @@ func (t *Token) UpdatePrice() {
 		os.Exit(-1)
 	}
 	defer response.Body.Close()
-	json.NewDecoder(response.Body).Decode(&t)
+	err = json.NewDecoder(response.Body).Decode(&t)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(-1)
+	}
 }
