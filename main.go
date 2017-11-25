@@ -7,6 +7,7 @@ import (
 func main() {
 	gemini := new(obs.Exchange)
 	gemini.SetName("Gemini")
+	gemini.UpdateTokens()
 	fmt.Println(gemini.GetName())
 	fmt.Println(gemini.GetTokens())
 }
