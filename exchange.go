@@ -1,20 +1,15 @@
 package orderbookSampler
 
 import (
-	"net/http"
+	"io/ioutil"
+	"os"
+	"fmt"
 	"encoding/json"
 )
 
 type Exchange struct {
-	name string
-	tickerurl string
-	symbolsurl string
+	name   string
 	tokens []Token
-	gsymbols []GeminiSymbol
-}
-
-type GeminiSymbol struct {
-	Name string `json:""`
 }
 
 func (e Exchange) Name() string {
@@ -23,23 +18,12 @@ func (e Exchange) Name() string {
 
 func (e Exchange) setName(name string) {
 	e.name = name
-}
-
-func (e Exchange) setTicker(tickerurl string, symbolurl string) bool {
-	if e.name == "Gemini" {
-		e.symbolsurl = symbolurl
-		e.tickerurl = tickerurl
-		response,err := http.Get(e.symbolsurl)
+	if name == "Gemini" {
+		config, err := ioutil.ReadFile("./api-data/gemini.json")
 		if err != nil {
-			return false
+			fmt.Println("unable to read json configuration file")
+			os.Exit(-1)
 		}
-		defer response.Body.Close()
-		json.NewDecoder(response.Body).Decode(&e.gsymbols)
-		e.tokens = []Token{*new(Token), *new(Token)} // this is bad code but it works
-		bitcoin := e.tokens[0]
-		ethereum := e.tokens[1]
+		json.Unmarshal(config, &e.tokens)
 	}
-
-
-	return true
 }
