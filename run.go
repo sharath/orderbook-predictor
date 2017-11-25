@@ -1,6 +1,9 @@
-package orderbookSampler
+package main
+import (
+	obs "orderbookSampler/orderbookSampler"
+)
 
 func main() {
-	gemini := new(Exchange)
-	gemini.setName("Gemini")
+	gemini := new(obs.Exchange)
+	gemini.SetName("Gemini")
 }
