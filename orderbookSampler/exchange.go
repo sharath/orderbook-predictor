@@ -12,18 +12,22 @@ type Exchange struct {
 	tokens []Token
 }
 
-func (e Exchange) Name() string {
+func (e *Exchange) GetName() string {
 	return e.name
 }
 
-func (e Exchange) setName(name string) {
+func (e *Exchange) SetName(name string) {
 	e.name = name
 	if name == "Gemini" {
-		config, err := ioutil.ReadFile("./api-data/gemini.json")
+		config, err := ioutil.ReadFile("orderbookSampler/api-data/gemini.json") // TODO clean up relative path
 		if err != nil {
-			fmt.Println("unable to read json configuration file")
+			fmt.Println(err)
 			os.Exit(-1)
 		}
 		json.Unmarshal(config, &e.tokens)
 	}
+}
+
+func (e *Exchange) GetTokens() []Token {
+	return e.tokens
 }
