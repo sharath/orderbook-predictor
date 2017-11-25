@@ -2,5 +2,7 @@ package orderbookSampler
 
 type Token struct {
 	Name string
-	PriceUSD float64
+	bid float64
+	ask float64
+	last float64
 }
