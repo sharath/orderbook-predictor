@@ -1,6 +1,7 @@
 package main
+
 import (
-	"orderbook-predictor/sampler"
+	"./sampler"
 	"fmt"
 )
 

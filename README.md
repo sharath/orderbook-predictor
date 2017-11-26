@@ -1,5 +1,7 @@
-## Orderbook Sampler
+## Orderbook Predictor
 
-Sampling program to fetch orderbook states from exchanges:
+Fetches orderbooks and attempts to predict future states.
+
+Current Exchanges:
 * [Gemini](http://www.gemini.com)
 * [Bitfinex](http://www.bitfinex.com)
