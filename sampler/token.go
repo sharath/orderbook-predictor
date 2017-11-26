@@ -1,4 +1,4 @@
-package orderbookSampler
+package sampler
 
 import (
 	"net/http"

@@ -1,4 +1,4 @@
-package orderbookSampler
+package sampler
 
 import (
 	"io/ioutil"
@@ -19,7 +19,7 @@ func (e *Exchange) GetName() string {
 
 func (e *Exchange) SetName(name string) {
 	e.name = name
-	config, err := ioutil.ReadFile("orderbookSampler/api-data/" + strings.ToLower(e.name) + ".json")
+	config, err := ioutil.ReadFile("sampler/api-data/" + strings.ToLower(e.name) + ".json")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(-1)

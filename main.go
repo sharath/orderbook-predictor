@@ -1,11 +1,11 @@
 package main
 import (
-	obs "orderbookSampler/orderbookSampler"
+	"orderbook-predictor/sampler"
 	"fmt"
 )
 
 func main() {
-	gemini := new(obs.Exchange)
+	gemini := new(sampler.Exchange)
 	gemini.SetName("Gemini")
 	gemini.UpdateTokens()
 	fmt.Println(gemini.GetName())
