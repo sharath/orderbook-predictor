@@ -1,4 +1,6 @@
 import matplotlib
+import os
+
 matplotlib.use('agg')
 from matplotlib import pyplot as plt
 from matplotlib.dates import date2num
@@ -49,6 +51,7 @@ if __name__ == "__main__":
     gbtc = create_time_tuple(btc)
     geth = create_time_tuple(eth)
     gltc = create_time_tuple(ltc)
-    output_tuple_graph(gbtc, "btc")
-    output_tuple_graph(geth, "eth")
-    output_tuple_graph(gltc, "ltc")
+    os.makedirs("output")
+    output_tuple_graph(gbtc, "output/btc")
+    output_tuple_graph(geth, "output/eth")
+    output_tuple_graph(gltc, "output/ltc")
