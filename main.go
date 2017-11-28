@@ -15,7 +15,8 @@ func sample(cb *slr.GDAX) {
 			file.Close()
 			file,_ = os.Create(path.Join("data", time.Now().Format("02-Jan-06.txt")))
 		}
-		time.Sleep(time.Second*2)
+		time.Sleep(time.Second*5)
+		// GDAX keeps banning my ip
 		n := time.Now()
 		cb.UpdateTokens()
 		cb.UpdateOrderbook()
@@ -43,7 +44,6 @@ func sample(cb *slr.GDAX) {
 func main() {
 	cb := slr.ConfigGDAX("config.json")
 	os.MkdirAll("data", os.ModePerm)
-
 	go sample(cb)
 	select {}
 }
