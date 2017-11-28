@@ -2,11 +2,16 @@
   {
     "name":"Bitcoin",
     "ticker":"https://api.gdax.com/products/BTC-USD/ticker",
-    "book":"https://api.gdax.com/products/BTC-USD/book?level=1"
+    "book":"https://api.gdax.com/products/BTC-USD/book?level=2"
   },
   {
     "name":"Ethereum",
     "ticker":"https://api.gdax.com/products/ETH-USD/ticker",
-    "book":"https://api.gdax.com/products/ETH-USD/book?level=1"
+    "book":"https://api.gdax.com/products/ETH-USD/book?level=2"
+  },
+  {
+    "name":"Litecoin",
+    "ticker":"https://api.gdax.com/products/LTC-USD/ticker",
+    "book":"https://api.gdax.com/products/LTC-USD/book?level=2"
   }
 ]
