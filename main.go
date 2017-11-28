@@ -9,10 +9,13 @@ import (
 )
 
 func sample(cb *slr.GDAX) {
-	file,_ := os.Create(path.Join("data", "file.txt"))
-	defer file.Close()
+	file,_ := os.Create(path.Join("data", time.Now().Format("02-Jan-06.txt")))
 	for {
-		time.Sleep(0.5*time.Second)
+		if file.Name() != path.Join("data", time.Now().Format("02-Jan-06.txt")) {
+			file.Close()
+			file,_ = os.Create(path.Join("data", time.Now().Format("02-Jan-06.txt")))
+		}
+		time.Sleep(time.Second*2)
 		n := time.Now()
 		cb.UpdateTokens()
 		cb.UpdateOrderbook()
