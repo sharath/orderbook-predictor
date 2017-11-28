@@ -2,34 +2,27 @@ package sampler
 
 import (
 	"net/http"
-	"fmt"
-	"os"
 	"encoding/json"
 )
 
 type Token struct {
-	// figure out how to do this with encapsulation
 	Name   string  `json:"name"`
 	Ticker string  `json:"ticker"`
 	Bid    float64 `json:"bid,string"`
 	Ask    float64 `json:"ask,string"`
-	Last   float64 `json:"last,string"`
+	Price  float64 `json:"price,string"`
 }
 
-func (t *Token) GetName() string {
+func (t Token) getName() string {
 	return t.Name
 }
 
-func (t *Token) UpdatePrice() {
-	response,err := http.Get(t.Ticker)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(-1)
-	}
+func (t Token) getPrice() (float64, float64, float64) {
+	return t.Price, t.Bid, t.Ask
+}
+
+func (t *Token) updatePrice() {
+	response,_ := http.Get(t.Ticker)
 	defer response.Body.Close()
-	err = json.NewDecoder(response.Body).Decode(&t)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(-1)
-	}
+	json.NewDecoder(response.Body).Decode(&t)
 }
