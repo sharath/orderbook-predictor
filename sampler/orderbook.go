@@ -2,7 +2,6 @@ package sampler
 
 import (
 	"net/http"
-	"encoding/json"
 )
 
 type Orderbook struct {
