@@ -9,11 +9,12 @@ import (
 )
 
 func sample(cb *slr.GDAX) {
-	file,_ := os.Create(path.Join("data", time.Now().Format("02-Jan-06.txt")))
+	dataPath := path.Join("data", time.Now().Format("02-Jan-06.txt"))
+	file, _ := os.OpenFile(dataPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 777)
 	for {
 		if file.Name() != path.Join("data", time.Now().Format("02-Jan-06.txt")) {
 			file.Close()
-			file,_ = os.Create(path.Join("data", time.Now().Format("02-Jan-06.txt")))
+			file, _ = os.OpenFile(dataPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 777)
 		}
 		time.Sleep(time.Second*5)
 		// GDAX keeps banning my ip
