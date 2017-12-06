@@ -23,19 +23,19 @@ func sample(cb *slr.GDAX) {
 		cb.UpdateOrderbook()
 
 		for i := 0; i < len(cb.Tokens); i++ {
-			fmt.Fprint(file,n.Format("02-Jan-06, 15:04:05.000PM, "))
-			fmt.Fprint(file,cb.Tokens[i].Name + ", ")
+			fmt.Fprintln(file,n.Format("02-Jan-06, 15:04:05.000PM"))
+			fmt.Fprint(file,cb.Tokens[i].Name + ", Market, ")
 			fmt.Fprintln(file,cb.Tokens[i].Price)
 			for j := 0; j < len(cb.Orderbook[i].Bids); j++ {
-				fmt.Fprint(file,cb.Tokens[i].Name + ", Bid, Price:")
+				fmt.Fprint(file,cb.Tokens[i].Name + ", Bid, ")
 				fmt.Fprint(file,cb.Orderbook[i].Bids[j][0])
-				fmt.Fprint(file,", Amount:")
+				fmt.Fprint(file,", ")
 				fmt.Fprintln(file,cb.Orderbook[i].Bids[j][1])
 			}
 			for j := 0; j < len(cb.Orderbook[i].Asks); j++ {
-				fmt.Fprint(file,cb.Tokens[i].Name + ", Ask, Price:")
+				fmt.Fprint(file,cb.Tokens[i].Name + ", Ask, ")
 				fmt.Fprint(file,cb.Orderbook[i].Asks[j][0])
-				fmt.Fprint(file,", Amount:")
+				fmt.Fprint(file,", ")
 				fmt.Fprintln(file,cb.Orderbook[i].Asks[j][1])
 			}
 		}
