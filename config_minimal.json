@@ -1,0 +1,7 @@
+[
+  {
+    "name":"Bitcoin",
+    "ticker":"https://api.gdax.com/products/BTC-USD/ticker",
+    "book":"https://api.gdax.com/products/BTC-USD/book?level=2"
+  }
+]
