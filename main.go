@@ -9,10 +9,10 @@ import (
 )
 
 func sample(cb *slr.GDAX) {
-	dataPath := path.Join("data", time.Now().Format("02-Jan-06.txt"))
+	dataPath := path.Join("data", time.Now().Format("02-Jan-06.csv"))
 	file, _ := os.OpenFile(dataPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 777)
 	for {
-		if file.Name() != path.Join("data", time.Now().Format("02-Jan-06.txt")) {
+		if file.Name() != path.Join("data", time.Now().Format("02-Jan-06.csv")) {
 			file.Close()
 			file, _ = os.OpenFile(dataPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 777)
 		}
