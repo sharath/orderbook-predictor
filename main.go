@@ -26,24 +26,39 @@ func sample(cb *slr.GDAX) {
 			fmt.Fprintln(file,n.Format("02-Jan-06, 15:04:05.000PM"))
 			fmt.Fprint(file,cb.Tokens[i].Name + ", Market, ")
 			fmt.Fprintln(file,cb.Tokens[i].Price)
+
+			fmt.Println(n.Format("02-Jan-06, 15:04:05.000PM"))
+			fmt.Print(cb.Tokens[i].Name + ", Market, ")
+			fmt.Println(cb.Tokens[i].Price)
+
 			for j := 0; j < len(cb.Orderbook[i].Bids); j++ {
 				fmt.Fprint(file,cb.Tokens[i].Name + ", Bid, ")
 				fmt.Fprint(file,cb.Orderbook[i].Bids[j][0])
 				fmt.Fprint(file,", ")
 				fmt.Fprintln(file,cb.Orderbook[i].Bids[j][1])
+
+				fmt.Print(file,cb.Tokens[i].Name + ", Bid, ")
+				fmt.Print(file,cb.Orderbook[i].Bids[j][0])
+				fmt.Print(file,", ")
+				fmt.Println(file,cb.Orderbook[i].Bids[j][1])
 			}
 			for j := 0; j < len(cb.Orderbook[i].Asks); j++ {
 				fmt.Fprint(file,cb.Tokens[i].Name + ", Ask, ")
 				fmt.Fprint(file,cb.Orderbook[i].Asks[j][0])
 				fmt.Fprint(file,", ")
 				fmt.Fprintln(file,cb.Orderbook[i].Asks[j][1])
+
+				fmt.Print(file,cb.Tokens[i].Name + ", Ask, ")
+				fmt.Print(file,cb.Orderbook[i].Asks[j][0])
+				fmt.Print(file,", ")
+				fmt.Println(file,cb.Orderbook[i].Asks[j][1])
 			}
 		}
 	}
 }
 
 func main() {
-	cb := slr.ConfigGDAX("config.json")
+	cb := slr.ConfigGDAX("config_minimal.json")
 	os.MkdirAll("data", os.ModePerm)
 	go sample(cb)
 	select {}
