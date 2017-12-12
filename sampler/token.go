@@ -2,6 +2,7 @@ package sampler
 
 import (
 	"net/http"
+	"encoding/json"
 )
 
 type Token struct {

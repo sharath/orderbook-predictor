@@ -2,9 +2,8 @@ package sampler
 
 import (
 	"io/ioutil"
-	"github.com/json-iterator/go"
+	"encoding/json"
 )
-var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 type GDAX struct {
 	Orderbook []*Orderbook
