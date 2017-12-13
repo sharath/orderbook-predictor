@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	cb := slr.ConfigGDAX("config_minimal.json")
+	cb := slr.ConfigGDAX(os.Args[1])
 	os.MkdirAll("data", os.ModePerm)
 	dataPath := path.Join("data", time.Now().Format("02-Jan-06.csv"))
 	file, _ := os.OpenFile(dataPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 777)
