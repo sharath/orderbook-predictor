@@ -8,6 +8,8 @@ import (
 	"path"
 )
 
+// TODO: Use encoding/csv
+
 func main() {
 	cb := slr.ConfigGDAX(os.Args[1])
 	os.MkdirAll("data", os.ModePerm)
